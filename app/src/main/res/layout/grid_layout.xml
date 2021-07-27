@@ -150,7 +150,6 @@
             android:id="@+id/button_equal"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="#F44437"
             android:text="@string/key_equal"
             android:textSize="@dimen/button_text" />
 
