@@ -1,0 +1,2 @@
+rootProject.name = "GB_HM_Calculator_Borisovsky"
+include ':app'
