@@ -22,7 +22,6 @@
             android:layout_gravity="fill"
             android:background="#B5F7FF"
             android:gravity="end"
-            android:text="0"
             android:textSize="50sp" />
 
 

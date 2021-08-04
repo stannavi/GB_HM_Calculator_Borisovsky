@@ -31,6 +31,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     Button button_point;
     Button button_equal;
 
+    boolean clear_flag;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,8 +52,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void onRestoreInstanceState(Bundle savedInstanceState) {
         super.onRestoreInstanceState(savedInstanceState);
     }
-
-
 
 
     private void initListeners() {
@@ -104,11 +104,63 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     public void onClick(View v) {
-
-    }
-
-    @Override
-    public void onPointerCaptureChanged(boolean hasCapture) {
-
+        switch (v.getId()) {
+            case R.id.button_0:
+                textView.setText("0");
+                break;
+            case R.id.button_1:
+                textView.setText("1");
+                break;
+            case R.id.button_2:
+                textView.setText("2");
+                break;
+            case R.id.button_3:
+                textView.setText("3");
+                break;
+            case R.id.button_4:
+                textView.setText("4");
+                break;
+            case R.id.button_5:
+                textView.setText("5");
+                break;
+            case R.id.button_6:
+                textView.setText("6");
+                break;
+            case R.id.button_7:
+                textView.setText("7");
+                break;
+            case R.id.button_8:
+                textView.setText("8");
+                break;
+            case R.id.button_9:
+                textView.setText("9");
+                break;
+            case R.id.button_point:
+                textView.setText(".");
+                break;
+            case R.id.button_plus:
+                textView.setText("+");
+                break;
+            case R.id.button_minus:
+                textView.setText("-");
+                break;
+            case R.id.button_multiply:
+                textView.setText("*");
+                break;
+            case R.id.button_divide:
+                textView.setText("/");
+                break;
+            case R.id.button_delete:
+                textView.setText("DEL");
+                break;
+            case R.id.button_reset:
+                textView.setText("AC");
+                break;
+            case R.id.button_equal:
+                textView.setText("=");
+                break;
+            default:
+                break;
+        }
     }
 }
