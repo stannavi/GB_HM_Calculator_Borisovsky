@@ -9,6 +9,8 @@ import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
+    static String TAG = "calculator";
+
     TextView textView;
 
     Button button_0;
@@ -31,7 +33,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     Button button_point;
     Button button_equal;
 
-    boolean clear_flag;
+    Calculator calculator;
 
 
     @Override
@@ -40,17 +42,22 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         setContentView(R.layout.activity_main);
         initView();
         initListeners();
+        calculator = new Calculator();
+        setContent();
 
     }
 
     @Override
     protected void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
+        outState.putParcelable(TAG, calculator);
     }
 
     @Override
     public void onRestoreInstanceState(Bundle savedInstanceState) {
         super.onRestoreInstanceState(savedInstanceState);
+        calculator = savedInstanceState.getParcelable(TAG);
+        setContent();
     }
 
 
@@ -101,6 +108,49 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         button_point = findViewById(R.id.button_point);
         button_equal = findViewById(R.id.button_equal);
     }
+
+    private void setContent() {
+        textView.setText(String.valueOf(calculator.getNum_0()));
+        textView.setText(String.valueOf(calculator.getNum_1()));
+        textView.setText(String.valueOf(calculator.getNum_2()));
+        textView.setText(String.valueOf(calculator.getNum_3()));
+        textView.setText(String.valueOf(calculator.getNum_4()));
+        textView.setText(String.valueOf(calculator.getNum_5()));
+        textView.setText(String.valueOf(calculator.getNum_6()));
+        textView.setText(String.valueOf(calculator.getNum_7()));
+        textView.setText(String.valueOf(calculator.getNum_8()));
+        textView.setText(String.valueOf(calculator.getNum_9()));
+        textView.setText(String.valueOf(calculator.getEqual()));
+        textView.setText(String.valueOf(calculator.getDivide()));
+        textView.setText(String.valueOf(calculator.getMinus()));
+        textView.setText(String.valueOf(calculator.getMultiply()));
+        textView.setText(String.valueOf(calculator.getPercent()));
+        textView.setText(String.valueOf(calculator.getPlus()));
+        textView.setText(String.valueOf(calculator.getPoint()));
+        textView.setText(String.valueOf(calculator.getReset()));
+        textView.setText(String.valueOf(calculator.getDelete()));
+
+    }
+
+    View.OnClickListener listener = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            switch (v.getId()) {
+                case R.id.button_0:
+                    calculator.getNum_0();
+                    textView.setText(String.valueOf(calculator.getNum_0()));
+                    break;
+
+                case R.id.button_1:
+                    calculator.getNum_1();
+                    textView.setText(String.valueOf(calculator.getNum_1()));
+                    break;
+                default:
+                    break;
+            }
+
+        }
+    };
 
     @Override
     public void onClick(View v) {
@@ -154,7 +204,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 textView.setText("DEL");
                 break;
             case R.id.button_reset:
-                textView.setText("AC");
+                textView.setText("C");
                 break;
             case R.id.button_equal:
                 textView.setText("=");
