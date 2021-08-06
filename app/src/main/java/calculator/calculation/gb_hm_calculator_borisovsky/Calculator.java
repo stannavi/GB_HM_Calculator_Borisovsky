@@ -5,6 +5,16 @@ import android.os.Parcelable;
 
 public class Calculator implements Parcelable {
 
+    private String  current;
+
+    public String getCurrent() {
+        return current;
+    }
+
+    public void setCurrent(String currend) {
+        this.current = currend;
+    }
+
     private int num_0 = 0;
     private int num_1 = 1;
     private int num_2 = 2;
