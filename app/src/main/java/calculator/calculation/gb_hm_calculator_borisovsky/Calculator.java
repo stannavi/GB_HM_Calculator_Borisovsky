@@ -5,14 +5,14 @@ import android.os.Parcelable;
 
 public class Calculator implements Parcelable {
 
-    private String  current;
+    private String current;
 
     public String getCurrent() {
         return current;
     }
 
-    public void setCurrent(String currend) {
-        this.current = currend;
+    public void setCurrent(String current) {
+        this.current = current;
     }
 
     private int num_0 = 0;

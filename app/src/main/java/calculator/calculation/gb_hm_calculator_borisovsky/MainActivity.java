@@ -50,6 +50,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     protected void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
+        calculator.setCurrent(textView.getText().toString());
         outState.putParcelable(TAG, calculator);
     }
 
@@ -57,7 +58,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void onRestoreInstanceState(Bundle savedInstanceState) {
         super.onRestoreInstanceState(savedInstanceState);
         calculator = savedInstanceState.getParcelable(TAG);
-        setContent();
+        textView.setText(calculator.getCurrent());
     }
 
 

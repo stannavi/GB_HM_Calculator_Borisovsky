@@ -22,6 +22,7 @@
             android:layout_columnSpan="4"
             android:layout_gravity="fill"
             android:background="#B5F7FF"
+            android:text="@string/_0"
             android:gravity="end"
             android:textSize="25sp" />
 

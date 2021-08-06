@@ -19,4 +19,5 @@
     <string name="key_delete">del</string>
     <string name="key_percent">%</string>
     <string name="key_divide">/</string>
+    <string name="_0">0</string>
 </resources>
