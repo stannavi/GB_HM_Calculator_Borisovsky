@@ -9,6 +9,8 @@ import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
+    // черновик урок 5
+
     static String TAG = "calculator";
 
     TextView textView;
