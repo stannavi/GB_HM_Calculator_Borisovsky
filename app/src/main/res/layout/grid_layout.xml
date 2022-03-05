@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -23,7 +24,6 @@
             android:background="#B5F7FF"
             android:gravity="end"
             android:textSize="50sp" />
-
 
 
         <com.google.android.material.button.MaterialButton
@@ -139,7 +139,7 @@
             android:text="@string/key_plus"
             android:textSize="@dimen/button_text" />
 
-        <Space/>
+        <Space />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/button_0"
@@ -167,4 +167,34 @@
             android:textSize="@dimen/button_text" />
 
     </GridLayout>
+
+
+    <RadioGroup
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom">
+
+        <com.google.android.material.radiobutton.MaterialRadioButton
+            android:id="@+id/MyTheme1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/theme_1"
+            android:textColor="@color/black"
+            android:textAlignment="center"
+            android:background="#a18cd1"
+            android:textSize="@dimen/my_theme_1_textSize" />
+
+        <com.google.android.material.radiobutton.MaterialRadioButton
+            android:id="@+id/MyTheme2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAlignment="center"
+            android:text="@string/theme_2"
+            android:textColor="@color/black"
+            android:background="#ffecd2"
+            android:textSize="@dimen/my_theme_2_textSize" />
+
+
+    </RadioGroup>
+
 </FrameLayout>

@@ -2,14 +2,20 @@ package calculator.calculation.gb_hm_calculator_borisovsky;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.RadioButton;
 import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
-    // черновик урок 4
+    static final int MyTheme1 = 1;
+    static final int MyTheme2 = 2;
+
+    static final String KEY_SP = "sp";
+    static final String KEY_CURRENT_THEME = "current_theme";
 
     static String TAG = "calculator";
 
@@ -42,11 +48,27 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        setTheme(getRealId(getCurrentTheme()));
         initView();
         initListeners();
         calculator = new Calculator();
         setContent();
+        init();
 
+    }
+
+    private void init() {
+        (findViewById(R.id.MyTheme1)).setOnClickListener(this);
+        (findViewById(R.id.MyTheme2)).setOnClickListener(this);
+        switch (getCurrentTheme()) {
+            case 1:
+                ((RadioButton) findViewById(R.id.MyTheme1)).setChecked(true);
+                break;
+            case 2:
+                ((RadioButton) findViewById(R.id.MyTheme2)).setChecked(true);
+                break;
+
+        }
     }
 
     @Override
@@ -59,7 +81,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void onRestoreInstanceState(Bundle savedInstanceState) {
         super.onRestoreInstanceState(savedInstanceState);
         calculator = savedInstanceState.getParcelable(TAG);
-        setContent(); 
+        setContent();
     }
 
 
@@ -151,6 +173,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     break;
             }
 
+
         }
     };
 
@@ -213,6 +236,45 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
             default:
                 break;
+        }
+    }
+
+    /*@Override
+    public void onClick(View view) {
+
+        switch (view.getId()) {
+            case R.id.MyTheme1:
+                setCurrentTheme(MyTheme1);
+                break;
+            case R.id.MyTheme2:
+                setCurrentTheme(MyTheme2);
+               break;
+        }
+
+        recreate();
+    }*/
+
+    private void setCurrentTheme(int currentTheme) {
+        SharedPreferences sharedPreferences = getSharedPreferences(KEY_SP, MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putInt(KEY_CURRENT_THEME, currentTheme);
+        editor.apply();
+    }
+
+    private int getCurrentTheme() {
+        SharedPreferences sharedPreferences = getSharedPreferences(KEY_SP, MODE_PRIVATE);
+        return (sharedPreferences.getInt(KEY_CURRENT_THEME, -1));
+
+    }
+
+    private int getRealId(int currentTheme) {
+        switch (currentTheme) {
+            case MyTheme1:
+                return R.style.My1;
+            case MyTheme2:
+                return R.style.My2;
+            default:
+                return R.style.My1;
         }
     }
 }
